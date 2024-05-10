@@ -12,9 +12,6 @@ const baseUrl = {
   BasePoster: "https://image.tmdb.org/t/p/w1280",
 };
 
-////
-////
-////
 function MovieDetailPage() {
   const navigate = useNavigate();
   const [movieDetail, setMovieDetail] = useState([]);
@@ -102,7 +99,7 @@ function MovieDetailPage() {
               bottom: 0,
               margin: "auto",
               backgroundColor: "rgba(1,1,1,0.6)",
-              // bgcolor: "white",
+
               padding: "3rem",
             }}
           >
