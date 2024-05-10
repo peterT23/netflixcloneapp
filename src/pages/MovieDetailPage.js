@@ -43,6 +43,7 @@ function MovieDetailPage() {
   };
   useEffect(() => {
     getMovieDetail();
+    // eslint-disable-next-line
   }, []);
 
   const closeModal = () => {

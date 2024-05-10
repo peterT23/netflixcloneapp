@@ -33,6 +33,7 @@ const ListMovies = ({ listName, title }) => {
       }
     };
     getMovies();
+    // eslint-disable-next-line
   }, []);
 
   return <SimpleSlider title={title} data={list} />;

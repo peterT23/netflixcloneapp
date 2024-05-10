@@ -34,6 +34,7 @@ const Player = () => {
 
   useEffect(() => {
     getTrailer();
+    // eslint-disable-next-line
   }, []);
 
   return (
