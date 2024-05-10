@@ -8,7 +8,6 @@ import SimpleSlider from "../layout/Slider";
 import VideoDisplay from "../layout/VideoDisplay";
 
 import apiService from "../app/apiService";
-import axios from "axios";
 
 const ListMovies = ({ listName, title }) => {
   const [list, setList] = useState([]);
@@ -23,11 +22,12 @@ const ListMovies = ({ listName, title }) => {
         },
       };
       try {
-        const response = apiService.get(
+        const response = await apiService.get(
           `/movie/${listName}?language=en-US&page=1`,
           options
         );
-        setList(response.results);
+        console.log("response movies", response.data.results);
+        setList(response.data.results);
       } catch (error) {
         console.log("get movie fail", error);
       }
@@ -35,7 +35,7 @@ const ListMovies = ({ listName, title }) => {
     getMovies();
   }, []);
 
-  return <SimpleSlider movieList={title} data={list} />;
+  return <SimpleSlider title={title} data={list} />;
 };
 
 const NetFlix = () => {

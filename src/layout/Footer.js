@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Stack, Typography, Grid } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import Logo from "./Logo";
 
 const content = [

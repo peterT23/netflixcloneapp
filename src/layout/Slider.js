@@ -41,7 +41,7 @@ function PrevArrow({ className, style, onClick }) {
   );
 }
 
-function SimpleSlider({ data, movieList }) {
+function SimpleSlider({ data, title }) {
   const navigate = useNavigate();
   const baseUrl = {
     BasePoster: "https://image.tmdb.org/t/p/w1280",
@@ -98,7 +98,7 @@ function SimpleSlider({ data, movieList }) {
   };
   return (
     <div className="imgcontainer">
-      <h3>{movieList}</h3>
+      <h3>{title}</h3>
       <Slider className="slider" {...settings}>
         {data.map((data, index) => (
           <div
