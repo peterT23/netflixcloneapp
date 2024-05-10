@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 
 import Layout from "../layout/Layout";
 
@@ -7,11 +8,9 @@ import SimpleSlider from "../layout/Slider";
 import VideoDisplay from "../layout/VideoDisplay";
 
 import apiService from "../app/apiService";
-// import axios from "axios";
+import axios from "axios";
 
-// const reducer = (state,action)=>{
-//   switch
-// }
+
 
 const NetFlix = () => {
   const [nowPlaying, setNowPlaying] = useState([]);
@@ -37,30 +36,29 @@ const NetFlix = () => {
           "/movie/upcoming?language=en-US&page=1",
         ];
 
-        apiService.all(
-          endpoints
-            .map((endpoint) => apiService.get(endpoint, options))
-            .then(
-              apiService.spread(
-                (
-                  { data: nowPlayingMovies },
-                  { data: popularMovies },
-                  { data: topRatedMovies },
-                  { data: upcomingMovies }
-                ) => {
-                  const nowPlayings = nowPlayingMovies.data.results;
-                  const populars = popularMovies.data.results;
-                  const topRateds = topRatedMovies.data.results;
-                  const upcomings = upcomingMovies.data.results;
+        axios
+          .all(endpoints.map((endpoint) => apiService.get(endpoint, options)))
+          .then(
+            axios.spread(
+              (
+                { data: nowPlayingMovies },
+                { data: popularMovies },
+                { data: topRatedMovies },
+                { data: upcomingMovies }
+              ) => {
+                console.log("nowPlaying", nowPlayingMovies);
 
-                  setNowPlaying(nowPlayings);
-                  setPopular(populars);
-                  setTopRated(topRateds);
-                  setUpcoming(upcomings);
-                }
-              )
+                const nowPlayings = nowPlayingMovies.results;
+                const populars = popularMovies.results;
+                const topRateds = topRatedMovies.results;
+                const upcomings = upcomingMovies.results;
+                setNowPlaying(nowPlayings);
+                setPopular(populars);
+                setTopRated(topRateds);
+                setUpcoming(upcomings);
+              }
             )
-        );
+          );
       } catch (error) {
         console.log("get movie fail", error);
       }
@@ -77,6 +75,7 @@ const NetFlix = () => {
           <SimpleSlider movieList="Popular" data={popular} />
           <SimpleSlider movieList="Top Rated" data={topRated} />
           <SimpleSlider movieList="Upcoming" data={upComing} />
+          <Outlet />
         </Box>
       </Layout>
     </div>

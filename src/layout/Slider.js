@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import data from "../data/data";
+import { useNavigate } from "react-router-dom";
 import { ButtonBase } from "@mui/material";
 import { ArrowRight, ArrowLeft } from "@mui/icons-material";
 
@@ -53,19 +53,21 @@ function PrevArrow({ className, style, onClick }) {
 }
 
 function SimpleSlider({ data, movieList }) {
+  const navigate = useNavigate();
   const baseUrl = {
     BasePoster: "https://image.tmdb.org/t/p/w1280",
   };
 
-  const handleClick = () => {
-    console.log("data");
+  const handleClick = (id) => {
+    console.log("data", id);
+    navigate(`movies/${id}`);
   };
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     // autoplay: true,
-    // autoplaySpeed: 1500,
+    // autoplaySpeed: 2000,
 
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -109,17 +111,12 @@ function SimpleSlider({ data, movieList }) {
     <div className="imgcontainer">
       <h3>{movieList}</h3>
       <Slider className="slider" {...settings}>
-        {/* <div className="card" onClick={handleClick}>
-          <img
-            src="https://image.tmdb.org/t/p/w1280/tMefBSflR6PGQLv7WvFPpKLZkyk.jpg"
-            alt=""
-            className="imagecss"
-          />
-          <div className="movie-text">Love, Deaths Robots</div>
-        </div> */}
-
         {data.map((data, index) => (
-          <div key={data.id} className="card" onClick={handleClick}>
+          <div
+            key={data.id}
+            className="card"
+            onClick={() => handleClick(data.id)}
+          >
             <img
               src={`${baseUrl.BasePoster}${data.poster_path}`}
               alt=""
@@ -128,34 +125,6 @@ function SimpleSlider({ data, movieList }) {
             <div className="movie-text">{data.title}</div>
           </div>
         ))}
-
-        {/* <div className="card">
-          <img src={data[2]} alt="" className="imagecss" />
-        </div>
-        <div className="card">
-          <img src={data[3]} alt="" className="imagecss" />
-        </div>
-        <div className="card">
-          <img src={data[4]} alt="" className="imagecss" />
-        </div>
-        <div className="card">
-          <img src={data[5]} alt="" className="imagecss" />
-        </div>
-        <div className="card">
-          <img src={data[6]} alt="" className="imagecss" />
-        </div>
-        <div className="card">
-          <img src={data[7]} alt="" className="imagecss" />
-        </div>
-        <div className="card">
-          <img src={data[8]} alt="" className="imagecss" />
-        </div>
-        <div className="card">
-          <img src={data[9]} alt="" className="imagecss" />
-        </div>
-        <div className="card">
-          <img src={data[10]} alt="" className="imagecss" />
-        </div> */}
       </Slider>
     </div>
   );

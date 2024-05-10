@@ -15,11 +15,6 @@ const data = [
   "https://image.tmdb.org/t/p/original//cyCAsMLGECvEAFDfKcxcWy7YTOW.jpg",
   "https://image.tmdb.org/t/p/original//cZ0d3rtvXPVvuiX22sP79K3Hmjz.jpg",
   "https://image.tmdb.org/t/p/original//e1nWfnnCVqxS2LeTO3dwGyAsG2V.jpg",
-  "https://image.tmdb.org/t/p/original//pB9L0jAnEQLMKgexqCEocEW8TA.jpg",
-  "https://image.tmdb.org/t/p/original//lwPFyjxAZY6NqHxywgY00Y4MFBx.jpg",
-  "https://image.tmdb.org/t/p/original//y8NJnTXzb4rio9uvVYFVrXEMofU.jpg",
-  "https://image.tmdb.org/t/p/original//tM6xqRKXoloH9UchaJEyyRE9O1w.jpg",
-  "https://image.tmdb.org/t/p/original//m7tG5E1EbywuwTsl6hq990So0Bx.jpg",
-  "https://image.tmdb.org/t/p/original//b0ldaLD1rSqg5DMxHBkNFAYIUQP.jpg",
+  
 ];
 export default data;

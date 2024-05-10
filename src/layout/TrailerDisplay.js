@@ -1,21 +1,30 @@
 import React from "react";
 import { Box, IconButton, CardMedia, Stack, Typography } from "@mui/material";
 
-import { useState } from "react";
-import VolumeOffIcon from "@mui/icons-material/VolumeOff";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import Logo from "../layout/Logo";
+// import { useState } from "react";
+// import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+// import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+// import Logo from "../layout/Logo";
 
-import video from "../Atlas.mp4";
-function VideoDisplay({ src = video }) {
-  const [mute, setMute] = useState(true);
-
-  const handleClick = () => {
-    setMute((mute) => !mute);
-  };
+function VideoDisplay({ trailer, src }) {
+  // const [mute, setMute] = useState(true);
+  // console.log(src);
+  // const handleClick = () => {
+  //   setMute((mute) => !mute);
+  // };
   return (
-    <Box component="div" position="relative">
-      <CardMedia
+    <Box
+      component="div"
+      sx={[
+        { marginTop: "5%" },
+        (theme) => ({
+          [theme.breakpoints.down("sm")]: {
+            marginTop: "35%",
+          },
+        }),
+      ]}
+    >
+      {/* <CardMedia
         sx={[
           {
             width: "100vw",
@@ -36,9 +45,20 @@ function VideoDisplay({ src = video }) {
         src={src}
         muted={mute}
         autoPlay
+        controls
         loop
-      />
-      <Box
+        allowFullScreen
+      /> */}
+      <iframe
+        width="1280"
+        height="720"
+        src={src}
+        title="Unfrosted | Official Trailer | Netflix"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+      {/* <Box
         sx={{
           position: "absolute",
           mt: "200px",
@@ -86,23 +106,7 @@ function VideoDisplay({ src = video }) {
               }),
             ]}
           >
-            |Atlas
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={[
-              {
-                color: "white",
-                fontFamily: "Arial",
-                fontWeight: "bold",
-              },
-              (theme) => ({
-                [theme.breakpoints.down("md")]: { display: "none" },
-              }),
-            ]}
-          >
-            A brilliant data analyst with a deep distrust of AI finds it may be
-            her only hope when a mission to capture a renegade robot goes awry.
+            {trailer.name}
           </Typography>
         </Stack>
 
@@ -142,7 +146,7 @@ function VideoDisplay({ src = video }) {
             />
           )}
         </IconButton>
-      </Box>
+      </Box> */}
     </Box>
   );
 }

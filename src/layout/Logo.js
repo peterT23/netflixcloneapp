@@ -9,13 +9,13 @@ const Logo = ({ disabledLink = false }) => {
         { width: "20px" },
         (theme) => ({
           [theme.breakpoints.down("sm")]: {
-            display: "none",
+            width: "10px",
           },
         }),
       ]}
     >
       <img
-        style={{ width: "10em", height: "auto" }}
+        style={{ width: "7em", height: "auto" }}
         src="https://res.cloudinary.com/ehizeex-shop/image/upload/v1668265433/NetflixApp/2560px-Netflix_2015_logo.svg_rbicwl_knwp6f.png"
         alt="no internet conection"
       />
