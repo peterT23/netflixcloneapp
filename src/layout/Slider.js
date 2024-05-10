@@ -9,7 +9,6 @@ import { ArrowRight, ArrowLeft } from "@mui/icons-material";
 function NextArrow({ className, style, onClick }) {
   return (
     <ButtonBase
-      // className="arrow"
       sx={{
         color: "red",
         position: "absolute",
@@ -17,11 +16,6 @@ function NextArrow({ className, style, onClick }) {
         top: "50%",
         backgroundColor: "rgba(255,255,255,0.5)",
       }}
-      // style={{
-      //   display: "block",
-
-      //   color: "white",
-      // }}
       onClick={onClick}
     >
       <ArrowRight sx={{ fontSize: "2.5rem", color: "red" }} />
@@ -40,11 +34,6 @@ function PrevArrow({ className, style, onClick }) {
         zIndex: "1",
       }}
       className="arrow"
-      // style={{
-      //   display: "block",
-
-      //   color: "white",
-      // }}
       onClick={onClick}
     >
       <ArrowLeft sx={{ fontSize: "2.5rem", color: "red" }} />
@@ -70,7 +59,7 @@ function SimpleSlider({ data, movieList }) {
     // autoplaySpeed: 2000,
 
     slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToScroll: 5,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     initialSlide: 0,
@@ -79,7 +68,7 @@ function SimpleSlider({ data, movieList }) {
         breakpoint: 1100,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 1,
+          slidesToScroll: 4,
           dots: true,
         },
       },
@@ -87,7 +76,7 @@ function SimpleSlider({ data, movieList }) {
         breakpoint: 900,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
           initialSlide: 2,
         },
       },
@@ -95,7 +84,7 @@ function SimpleSlider({ data, movieList }) {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
         },
       },
       {
