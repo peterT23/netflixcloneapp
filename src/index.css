@@ -98,7 +98,8 @@ code {
 .search-card {
   width: 250px;
   height: 375px;
-  margin: 20px;
+  margin: 20px auto;
+
   position: relative;
 
   transition: all 200ms;
@@ -125,7 +126,7 @@ code {
   border-bottom-right-radius: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   .movie-text {
     font-size: 0.8rem;
   }
@@ -138,5 +139,16 @@ code {
   }
   .overview {
     font-size: 0.5em;
+  }
+  .card {
+    margin: auto;
+  }
+  .card img {
+    width: 60%;
+  }
+  .movie-text {
+    width: 60%;
+    left: 4rem;
+    margin: auto;
   }
 }
