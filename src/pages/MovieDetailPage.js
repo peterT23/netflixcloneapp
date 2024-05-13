@@ -88,7 +88,8 @@ function MovieDetailPage() {
             backgroundColor: "rgba(1,1,1,0.4)",
             border: "2px solid #000",
             boxShadow: 24,
-            padding: 4,
+            // padding: 4,
+            overflow: "scroll",
           }}
         >
           <div
@@ -101,7 +102,8 @@ function MovieDetailPage() {
               margin: "auto",
               backgroundColor: "rgba(1,1,1,0.6)",
 
-              padding: "3rem",
+              padding: "1rem",
+              overflow: "scroll",
             }}
           >
             <Logo />
@@ -144,12 +146,13 @@ function MovieDetailPage() {
                   {movieDetail.original_title}
                 </div>
                 <div
+                  className="overview"
                   style={{
                     maxWidth: "500px",
                     marginTop: "20px",
-                    fontSize: "1.2em",
+                    fontSize: "1em",
                     color: "white",
-                    fontWeight: "700",
+                    fontWeight: "600",
                   }}
                 >
                   {movieDetail.overview}
@@ -173,7 +176,7 @@ function MovieDetailPage() {
               <div>
                 <img
                   style={{
-                    width: "35vw",
+                    width: "26vw",
                     border: "3px solid white",
                     margin: "5%",
                   }}

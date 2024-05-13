@@ -11,27 +11,55 @@ import AuthRequire from "./routes/AuthRequire";
 
 import MovieDetailPage from "./pages/MovieDetailPage";
 import Player from "./pages/Player";
+import SearchPage from "./pages/SearchPage";
+import Layout from "./layout/Layout";
+import { loader as searchLoader } from "./pages/SearchPage";
+import VideoDisplaySlider from "./layout/VideoDisplaySlider";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <AuthRequire>
-        <NetFlix />
+        <Layout />
       </AuthRequire>
     ),
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "movies/:id",
-        element: <MovieDetailPage />,
+        path: "/",
+        element: <NetFlix />,
+
+        children: [
+          {
+            path: "movies/:id",
+            element: <MovieDetailPage />,
+          },
+        ],
+      },
+
+      {
+        path: "/search",
+        element: <SearchPage />,
+        loader: searchLoader,
+        children: [
+          {
+            path: "movies/:id",
+            element: <MovieDetailPage />,
+          },
+        ],
+      },
+      {
+        path: "movies/:id/trailer",
+        element: <Player />,
+      },
+      {
+        path: "/video",
+        element: <VideoDisplaySlider />,
       },
     ],
   },
-  {
-    path: "movies/:id/trailer",
-    element: <Player />,
-  },
+
   {
     path: "/login",
     element: <LoginPage />,

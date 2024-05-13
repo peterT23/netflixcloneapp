@@ -1,12 +1,14 @@
 import React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import { AppBar, Box, Button, Toolbar, InputBase } from "@mui/material";
+import { AppBar, Box, Button, Toolbar, InputAdornment } from "@mui/material";
 import logo from "../netflixLogo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import { deepOrange } from "@mui/material/colors";
 import useAuth from "../customhook/useAuth";
 import { Link } from "react-router-dom";
+import { FTextField, FormProvider } from "../hookformComponent";
+import { useForm } from "react-hook-form";
 
 const HeaderContainer = styled(Toolbar)(({ theme }) => ({
   "&.MuiToolbar-root": {
@@ -28,62 +30,74 @@ const HeaderContainer = styled(Toolbar)(({ theme }) => ({
   },
 }));
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
+// const Search = styled("form")(({ theme }) => ({
+//   position: "relative",
 
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    border: "1px solid white ",
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
-  [theme.breakpoints.down("sm")]: {
-    marginLeft: 0,
-    width: "auto",
-  },
-}));
+//   borderRadius: theme.shape.borderRadius,
+//   backgroundColor: alpha(theme.palette.common.white, 0.15),
+//   "&:hover": {
+//     border: "1px solid white ",
+//     backgroundColor: alpha(theme.palette.common.white, 0.25),
+//   },
+//   marginLeft: 0,
+//   width: "100%",
+//   [theme.breakpoints.up("sm")]: {
+//     marginLeft: theme.spacing(1),
+//     width: "auto",
+//   },
+//   [theme.breakpoints.down("sm")]: {
+//     marginLeft: 0,
+//     width: "auto",
+//   },
+// }));
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
+// const SearchIconWrapper = styled("div")(({ theme }) => ({
+//   padding: theme.spacing(0, 2),
+//   height: "100%",
+//   position: "absolute",
+//   pointerEvents: "none",
+//   display: "flex",
 
-  alignItems: "center",
-  justifyContent: "center",
-}));
+//   alignItems: "center",
+//   justifyContent: "center",
+// }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  width: "100%",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
-}));
+// const StyledInputBase = styled(InputBase)(({ theme }) => ({
+//   color: "inherit",
+//   width: "100%",
+//   "& .MuiInputBase-input": {
+//     padding: theme.spacing(1, 1, 1, 0),
+//     // vertical padding + font size from searchIcon
+//     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+//     transition: theme.transitions.create("width"),
+//     [theme.breakpoints.up("sm")]: {
+//       width: "12ch",
+//       "&:focus": {
+//         width: "20ch",
+//       },
+//     },
+//   },
+// }));
 
 const Header = (props) => {
   const auth = useAuth();
   const navigate = useNavigate();
+  const methods = useForm();
+  const { handleSubmit } = methods;
+
+  const onSubmit = async (data) => {
+    console.log("data", data);
+    if (!data.q) {
+      navigate("/");
+    } else {
+      navigate(`/search?q=${data.q}`);
+    }
+  };
+
   return (
     <AppBar sx={[{ backgroundColor: "rgba(0,0,0,0.8)" }]} position="fixed">
       <HeaderContainer>
-        <Box sx={{ width: "150px", height: "auto", mt: "5px" }}>
+        <Box sx={{ width: "150px", height: "auto", mt: "5px", mr: "20px" }}>
           <Link to="/">
             <img
               style={{ width: "100%", height: "100%" }}
@@ -92,15 +106,21 @@ const Header = (props) => {
             />
           </Link>
         </Box>
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ "aria-label": "search" }}
+
+        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+          <FTextField
+            name="q"
+            size="small"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon sx={{ color: "white" }} />
+                </InputAdornment>
+              ),
+            }}
           />
-        </Search>
+        </FormProvider>
+
         <Box flexGrow={1}></Box>
         <Button
           sx={{

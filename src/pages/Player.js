@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Layout from "../layout/Layout";
+
 import TrailerDisplay from "../layout/TrailerDisplay";
 import { useState } from "react";
 import apiService from "../app/apiService";
@@ -37,18 +37,22 @@ const Player = () => {
     // eslint-disable-next-line
   }, []);
 
+  const trailerArr = trailerData.filter(
+    (trailer) => trailer.name === "Official Trailer"
+  );
+  console.log("trailerArr ", trailerArr);
   return (
-    <Layout>
+    <>
       {trailerData.map(
         (trailer) =>
-          trailer.name === "Official Trailer" && (
+          trailer.type === "Trailer" && (
             <TrailerDisplay
               trailer={trailer}
               src={`https://www.youtube.com/embed/${trailer.key}`}
             />
           )
       )}
-    </Layout>
+    </>
   );
 };
 

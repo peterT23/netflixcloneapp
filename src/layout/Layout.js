@@ -3,7 +3,8 @@ import { Box } from "@mui/material";
 
 import Header from "./Header";
 import Footer from "./Footer";
-const Layout = ({ children }) => {
+import { Outlet } from "react-router-dom";
+const Layout = () => {
   return (
     <Box
       sx={{
@@ -18,7 +19,7 @@ const Layout = ({ children }) => {
       }}
     >
       <Header />
-      {children}
+      <Outlet />
       <Footer />
     </Box>
   );

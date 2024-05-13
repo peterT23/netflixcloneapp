@@ -1,7 +1,14 @@
 import React from "react";
 
 import Header from "../layout/Header";
-import { Box, Button, Stack, IconButton, InputAdornment } from "@mui/material";
+import {
+  Box,
+  Button,
+  Stack,
+  IconButton,
+  InputAdornment,
+  Typography,
+} from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { FormProvider, FTextField } from "../hookformComponent";
@@ -96,6 +103,9 @@ const LoginPage = () => {
             // }),
           ]}
         >
+          <Typography variant="subtitle1" color="white">
+            Type down any email and password
+          </Typography>
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={7}>
               <FTextField name="email" label="Email" />
