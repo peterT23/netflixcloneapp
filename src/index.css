@@ -145,10 +145,12 @@ code {
   }
   .card img {
     width: 60%;
+    margin: auto;
   }
   .movie-text {
     width: 60%;
-    left: 4rem;
+    left: 0;
+    right: 0;
     margin: auto;
   }
 }
