@@ -20,12 +20,13 @@ const ListMovies = ({ listName, title, page }) => {
             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDY4MjBhOTNlYzRkZjZiNThkYTMxN2JmNjUxZDc4YyIsInN1YiI6IjY2MzQ0Y2UyYTFjNTlkMDEyOWU3MjU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-ofXLm2NfssGz9jyIfyKGPwLg3ANTHdGjJELR0L3Mr8",
         },
       };
+
       try {
         const response = await apiService.get(
           `/movie/${listName}?language=en-US&page=${page}`,
           options
         );
-        console.log("response movies", response.data.results);
+        if (response.data.length === 0) return;
         setList(response.data.results);
       } catch (error) {
         console.log("get movie fail", error);
