@@ -14,7 +14,7 @@ import Player from "./pages/Player";
 import SearchPage from "./pages/SearchPage";
 import Layout from "./layout/Layout";
 import { loader as searchLoader } from "./pages/SearchPage";
-import VideoDisplaySlider from "./layout/VideoDisplaySlider";
+import VideoDisplay from "./layout/VideoDisplay";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +41,7 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchPage />,
+
         loader: searchLoader,
         children: [
           {
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/video",
-        element: <VideoDisplaySlider />,
+        element: <VideoDisplay />,
       },
     ],
   },
