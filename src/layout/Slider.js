@@ -100,7 +100,7 @@ function SimpleSlider({ data, title }) {
     <div className="imgcontainer">
       <h3>{title}</h3>
       <Slider className="slider" {...settings}>
-        {data.map((data) => (
+        {data?.map((data) => (
           <div
             key={data.id}
             className="card"
