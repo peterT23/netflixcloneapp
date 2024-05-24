@@ -37,16 +37,17 @@ const Player = () => {
     // eslint-disable-next-line
   }, []);
 
-  const trailerArr = trailerData.filter(
-    (trailer) => trailer.name === "Official Trailer"
-  );
-  console.log("trailerArr ", trailerArr);
+  // const trailerArr = trailerData.filter(
+  //   (trailer) => trailer.name === "Official Trailer"
+  // );
+  // console.log("trailerArr ", trailerArr);
   return (
     <>
       {trailerData.map(
-        (trailer) =>
+        (trailer, index) =>
           trailer.type === "Trailer" && (
             <TrailerDisplay
+              key={index}
               trailer={trailer}
               src={`https://www.youtube.com/embed/${trailer.key}`}
             />
