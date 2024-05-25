@@ -12,6 +12,14 @@ const ListMovies = ({ listName, title, page }) => {
   const [list, setList] = useState([]);
   useEffect(() => {
     const getMovies = async () => {
+      // const options = {
+      //   method: "GET",
+      //   headers: {
+      //     accept: "application/json",
+      //     Authorization:
+      //       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDY4MjBhOTNlYzRkZjZiNThkYTMxN2JmNjUxZDc4YyIsInN1YiI6IjY2MzQ0Y2UyYTFjNTlkMDEyOWU3MjU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-ofXLm2NfssGz9jyIfyKGPwLg3ANTHdGjJELR0L3Mr8",
+      //   },
+      // };
       const options = {
         method: "GET",
         headers: {
@@ -20,10 +28,10 @@ const ListMovies = ({ listName, title, page }) => {
             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDY4MjBhOTNlYzRkZjZiNThkYTMxN2JmNjUxZDc4YyIsInN1YiI6IjY2MzQ0Y2UyYTFjNTlkMDEyOWU3MjU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-ofXLm2NfssGz9jyIfyKGPwLg3ANTHdGjJELR0L3Mr8",
         },
       };
-
       try {
         const response = await apiService.get(
-          `/movie/${listName}?language=en-US&page=${page}`,
+          // `/movie/${listName}?language=en-US&page=${page}`,
+          `https://api.themoviedb.org/3/movie/${listName}?language=en-US&page=${page}`,
           options
         );
         if (response.data.length === 0) return;
