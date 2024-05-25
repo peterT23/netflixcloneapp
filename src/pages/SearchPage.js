@@ -35,7 +35,7 @@ function SearchPage() {
       };
       try {
         const response = await apiService.get(
-          `/search/movie?query=${q}&include_adult=false&language=en-US&page=1`,
+          `https://api.themoviedb.org/3/search/movie?query=${q}&include_adult=true&language=en-US`,
           options
         );
 
