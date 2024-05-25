@@ -34,7 +34,10 @@ function MovieDetailPage() {
       },
     };
     try {
-      const response = await apiService.get(`/movie/${paramId.id}`, options);
+      const response = await apiService.get(
+        `https://api.themoviedb.org/3/movie/${paramId.id}`,
+        options
+      );
       console.log("movie detail response", response.data);
       setMovieDetail(response.data);
     } catch (error) {

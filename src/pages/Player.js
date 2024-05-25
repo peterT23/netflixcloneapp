@@ -22,7 +22,7 @@ const Player = () => {
     };
     try {
       const response = await apiService.get(
-        `/movie/${paramId.id}/videos`,
+        `https://api.themoviedb.org/3/movie/${paramId.id}/videos`,
         options
       );
       console.log("movie detail response", response.data.results);
