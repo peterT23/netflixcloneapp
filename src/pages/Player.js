@@ -4,6 +4,7 @@ import TrailerDisplay from "../layout/TrailerDisplay";
 import { useState } from "react";
 import apiService from "../app/apiService";
 import { useParams } from "react-router-dom";
+import { BEARER } from "../app/config";
 
 const Player = () => {
   const paramId = useParams();
@@ -16,16 +17,15 @@ const Player = () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDY4MjBhOTNlYzRkZjZiNThkYTMxN2JmNjUxZDc4YyIsInN1YiI6IjY2MzQ0Y2UyYTFjNTlkMDEyOWU3MjU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-ofXLm2NfssGz9jyIfyKGPwLg3ANTHdGjJELR0L3Mr8",
+        Authorization: BEARER,
       },
     };
     try {
       const response = await apiService.get(
-        `https://api.themoviedb.org/3/movie/${paramId.id}/videos`,
+        `/movie/${paramId.id}/videos`,
         options
       );
-      console.log("movie detail response", response.data.results);
+
       setTrailerData(response.data.results);
     } catch (error) {
       console.log("get detail movies fail");

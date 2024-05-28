@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 // import axios from "axios";
 import apiService from "../app/apiService";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { BEARER } from "../app/config";
 
 export async function loader({ request }) {
   console.log("request", request);
@@ -29,13 +30,12 @@ function SearchPage() {
         method: "GET",
         headers: {
           accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDY4MjBhOTNlYzRkZjZiNThkYTMxN2JmNjUxZDc4YyIsInN1YiI6IjY2MzQ0Y2UyYTFjNTlkMDEyOWU3MjU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-ofXLm2NfssGz9jyIfyKGPwLg3ANTHdGjJELR0L3Mr8",
+          Authorization: BEARER,
         },
       };
       try {
         const response = await apiService.get(
-          `https://api.themoviedb.org/3/search/movie?query=${q}&include_adult=true&language=en-US`,
+          `/search/movie?query=${q}&include_adult=true&language=en-US`,
           options
         );
 

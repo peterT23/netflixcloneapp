@@ -7,6 +7,7 @@ import Slide from "@mui/material/Slide";
 
 import { useNavigate } from "react-router-dom";
 import Logo from "../layout/Logo";
+import { BEARER } from "../app/config";
 
 const baseUrl = {
   BasePoster: "https://image.tmdb.org/t/p/w1280",
@@ -29,15 +30,11 @@ function MovieDetailPage() {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDY4MjBhOTNlYzRkZjZiNThkYTMxN2JmNjUxZDc4YyIsInN1YiI6IjY2MzQ0Y2UyYTFjNTlkMDEyOWU3MjU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-ofXLm2NfssGz9jyIfyKGPwLg3ANTHdGjJELR0L3Mr8",
+        Authorization: BEARER,
       },
     };
     try {
-      const response = await apiService.get(
-        `https://api.themoviedb.org/3/movie/${paramId.id}`,
-        options
-      );
+      const response = await apiService.get(`/movie/${paramId.id}`, options);
       console.log("movie detail response", response.data);
       setMovieDetail(response.data);
     } catch (error) {
