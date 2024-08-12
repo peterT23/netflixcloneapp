@@ -38,9 +38,9 @@ https://github.com/peterT23/netflixcloneapp.git
    npm install
 ## Screenshots
 
-![Uploading Screenshot 2024-08-12 at 19.57.42.png…]()
-![Uploading Screenshot 2024-08-12 at 19.57.21.png…]()
-![Uploading Screenshot 2024-08-12 at 19.57.04.png…]()
+<img width="1403" alt="Screenshot 2024-08-12 at 19 57 42" src="https://github.com/user-attachments/assets/1b53b448-32d8-4aad-8a9e-de6c973674e1">
+<img width="1419" alt="Screenshot 2024-08-12 at 19 57 21" src="https://github.com/user-attachments/assets/7a98c1f8-6d46-4ec2-941c-543b4e56ee6e">
+<img width="1427" alt="Screenshot 2024-08-12 at 19 57 04" src="https://github.com/user-attachments/assets/ecc81d4d-bf7d-4db7-b16d-739ad194f9af">
 
 ## Contributing
 Contributions are welcome! If you have any ideas or improvements, feel free to submit a pull request or open an issue.
